@@ -13,10 +13,10 @@ const AddRecipeForm = ({onNewRecipe=f=>f}) => {
     <form onSubmit={submit}>
       <label>Title</label>
       <input ref={input => _title = input}
-        type="text" />
+        type="text" id="enter-title"/>
       <label>Ingredients</label>
       <input ref={input => _ingredients = input}
-        type="text" />
+        type="text" id="enter-ingredients"/>
       <button>
         Add
       </button>  
@@ -76,9 +76,9 @@ class App extends React.Component {
     this.setState({ editing: true })
     let recipe = this.state.recipes.filter(
       recipe => recipe.id == id)
-    console.log(recipe);
-    return   
-    (<p>edit</p>);
+    document.getElementById("enter-title").value = recipe[0].title
+    document.getElementById("enter-ingredients").value = recipe[0].ingredients
+    this.removeRecipe(id)
   }
     
   removeRecipe(id) {
@@ -94,7 +94,6 @@ class App extends React.Component {
 
     return (
       <div className = "app">
-        {this.editRecipe}
         <h1>Recipes</h1>
         <AddRecipeForm onNewRecipe={addRecipe} />
         <RecipeList recipes={recipes} 
