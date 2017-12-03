@@ -1,6 +1,15 @@
 //main sources: Learning React, O'Reilly 2017
 window.id = 0;
 
+function toggleDiv() {
+  var hidden = document.getElementById("hiddenDiv");
+  if (hidden.style.display === "none") {
+    hidden.style.display = "block";
+  } else {
+    hidden.style.display = "none";
+  }
+}
+
 const AddRecipeForm = ({onNewRecipe=f=>f}) => {
   let _title, _ingredients
   const submit = e => {
@@ -26,10 +35,15 @@ const AddRecipeForm = ({onNewRecipe=f=>f}) => {
 
 const Recipe = ({title, ingredients, onRemove=f=>f, onEdit=f=>f }) =>
   <div>
-  <h3>{title}</h3>
-  <p>{ingredients}</p>
-  <button onClick={onRemove}>X</button>
-  <button onClick={onEdit}>Edit</button>
+    <div onClick={toggleDiv}>
+      <h3>{title}</h3>
+    </div>
+   
+    <div id="hiddenDiv">
+      <p >{ingredients}</p>
+      <button onClick={onEdit}>Edit</button>
+      <button onClick={onRemove}>X</button>
+    </div>
   </div>
 
 const RecipeList = ({ recipes = [], onRemove=f=>f, onEdit=f=>f }) => (
