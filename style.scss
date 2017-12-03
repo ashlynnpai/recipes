@@ -1,0 +1,33 @@
+$font-stack: Roboto;
+  
+body {
+  text-align: center;
+  font-family: $font-stack;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #474747;
+  margin-bottom: 200px;
+}
+
+button {
+  border-radius: 5px;
+  margin: 0 10px;
+  height: 25px;
+  background-color: #FF847C;
+}
+
+input {
+  border-radius: 3px;
+  margin: 0 5px;
+  height: 25px;
+}
+
+#recipe-title {
+  margin: 40px 0;
+  padding: 10px 0;
+  background-color: #FECEA8;
+}
+
+#hiddenDiv {
+  display: none;
+}
