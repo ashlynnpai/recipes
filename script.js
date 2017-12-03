@@ -1,12 +1,13 @@
 //main sources: Learning React, O'Reilly 2017
 window.id = 0;
 
-function toggleDiv() {
-  var hidden = document.getElementById("hiddenDiv");
-  if (hidden.style.display === "none") {
-    hidden.style.display = "block";
+function toggleDiv(mydiv) {
+  var divname = mydiv.currentTarget.id;
+  var hidden = document.getElementById(divname).children;
+  if (hidden[1].style.display === "none") {
+    hidden[1].style.display = "block";
   } else {
-    hidden.style.display = "none";
+    hidden[1].style.display = "none";
   }
 }
 
@@ -35,14 +36,13 @@ const AddRecipeForm = ({onNewRecipe=f=>f}) => {
 
 const Recipe = ({title, ingredients, onRemove=f=>f, onEdit=f=>f }) =>
   <div>
-    <div onClick={toggleDiv}>
+    <div id={title} onClick={toggleDiv}>
       <h3>{title}</h3>
-    </div>
-   
-    <div id="hiddenDiv">
-      <p >{ingredients}</p>
+       <div id="hiddenDiv">
+      <p>{ingredients}</p>
       <button onClick={onEdit}>Edit</button>
       <button onClick={onRemove}>X</button>
+    </div>
     </div>
   </div>
 
@@ -122,4 +122,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
