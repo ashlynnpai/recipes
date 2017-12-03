@@ -64,8 +64,9 @@ const RecipeList = ({ recipes = [], onRemove=f=>f, onEdit=f=>f }) => (
 class App extends React.Component {
   constructor(props) {
     super(props);
+    var initialList = (typeof localStorage["savedRecipes"] != "undefined") ?       JSON.parse(localStorage.getItem("savedRecipes")) : [{title: "Cake",           ingredients: "flour, sugar, vanilla"}];
     this.state = {
-    recipes: [{title: "Cake", ingredients: "sugar"}],
+    recipes: initialList,
     editing: false
     };
     
@@ -83,6 +84,7 @@ class App extends React.Component {
         ingredients
       }
     ]
+    localStorage.setItem("savedRecipes", JSON.stringify(recipes));
     this.setState({recipes})
   }
   
